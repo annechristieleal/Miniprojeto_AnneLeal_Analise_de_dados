@@ -262,3 +262,21 @@ for cat, qtde in vendas_por_categoria.head(5).items():
 # 3. O gênero com maior volume de itens vendidos é o feminino
 # 4. A categoria mais vendida é a de alimentos
 # 5. As duplicatas foram mantidas por representarem quantidades, evitando subestimação das vendas.
+
+# DF_limpo.csv
+df.to_csv("df_limpo.csv", sep=";", index=False)
+print("\nDataset limpo salvo como 'df_limpo.csv'")
+
+df_limpo = pd.read_csv("df_limpo.csv", sep=";")
+print("Quantidade de registros:")
+print(df_limpo.shape[0])
+print("\nQuantidade de colunas:")
+print(df_limpo.shape[1])
+print("\nColunas:")
+print(df_limpo.columns.tolist())
+print("\nTipos de dados:")
+print(df_limpo.dtypes)
+
+display(df_limpo.head())
+display(df_limpo.shape)
+display(type(df_limpo))
