@@ -225,3 +225,40 @@ print(vendas_por_genero)
 vendas_por_categoria = df.groupby("PR_CAT").size().sort_values(ascending=False)
 print("\n--- TOP 10 CATEGORIAS MAIS VENDIDAS (EM NÚMERO DE ITENS) ---")
 print(vendas_por_categoria.head(10))
+
+
+
+# Relatório Final
+# 1. Resumo geral dos dados
+print("\n1. RESUMO GERAL DOS DADOS")
+print(f"   - Total de registros após limpeza: {len(df):,}")
+print(f"   - Total de colunas: {df.shape[1]}")
+
+# 2. Problemas identificados e tratamentos
+print("\n2. PROBLEMAS IDENTIFICADOS E TRATAMENTOS APLICADOS")
+print("   a) Colunas totalmente vazias: removidas (4 colunas).")
+print("   b) Valores nulos em DATA: preenchidos com a data da mesma compra (CO_ID).")
+print("   c) Categorias vazias ou '#N/D': substituídas por 'Sem Categoria'.")
+print(f"   d) Duplicatas: {df.duplicated().sum()} linhas duplicadas encontradas. Optou-se por NÃO removê-las, pois representam unidades de produtos (quantidade).")
+
+# 3. Estatísticas descritivas - número de filhos
+print("\n3. ESTATÍSTICAS DESCRITIVAS - NÚMERO DE FILHOS (CL_FHL)")
+print(df['CL_FHL'].describe(percentiles=[0.25, 0.5, 0.75]))
+print(f"   Moda: {df['CL_FHL'].mode()[0]}")
+
+# 4. Resultados dos agrupamentos
+print("\n4. PADRÕES DE AGRUPAMENTO")
+print("   a) Itens vendidos por gênero:")
+for genero, qtde in vendas_por_genero.items():
+    print(f"      - {genero}: {qtde:,} itens")
+print("\n   b) Top 5 categorias mais vendidas (em itens):")
+for cat, qtde in vendas_por_categoria.head(5).items():
+    print(f"      - {cat}: {qtde:,} itens")
+    
+# 5. Conclusões e insights :
+
+# 1. A base de dados foi limpa com sucesso, removendo colunas vazias e tratando valores nulos
+# 2. A maioria dos clientes possui entre 0 e 2 filhos
+# 3. O gênero com maior volume de itens vendidos é o feminino
+# 4. A categoria mais vendida é a de alimentos
+# 5. As duplicatas foram mantidas por representarem quantidades, evitando subestimação das vendas.
