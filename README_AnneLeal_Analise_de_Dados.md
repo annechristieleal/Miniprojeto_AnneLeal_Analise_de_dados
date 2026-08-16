@@ -22,7 +22,7 @@ Este projeto consiste em uma Análise Exploratória de Dados aplicada a uma base
 ## Estrutura dos Arquivos
 - `projeto.py`: Script principal com todas as etapas.
 - `base_varejo.csv`: Dataset original
--  `README_NomeDoAluno_Turma.md`
+-  `README_AnneLeal_Analise_de_Dados.md`
   
  ## Referências
 - Base de dados: [Kaggle - Base Varejo](https://www.kaggle.com/datasets/namespaiva/base-varejo/data)
