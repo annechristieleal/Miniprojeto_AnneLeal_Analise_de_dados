@@ -207,9 +207,21 @@ else:
     
 
 
+# Gerar estatísticas descritivas básicas para coluna de número de filhos do cliente (média; mediana; desvio padrão; moda; máximo; mínimo; e contagem, quartis)
 
+print(df['CL_FHL'].describe(percentiles=[0.25, 0.5, 0.75]))
 
+print("Moda:", df['CL_FHL'].mode()[0])
 
+# Explorar padrões de agrupamento com pelo menos dois agrupamentos (por exemplo: gênero com mais vendas, compras), usando groupby() 
 
+#Vendas por gênero do cliente 
+vendas_por_genero = df.groupby("CL_GENERO").size()
+vendas_por_genero = vendas_por_genero.sort_values(ascending=False)
+print("\n--- ITENS VENDIDOS POR GÊNERO ---")
+print(vendas_por_genero)
 
-
+#Vendas por categoria de produto 
+vendas_por_categoria = df.groupby("PR_CAT").size().sort_values(ascending=False)
+print("\n--- TOP 10 CATEGORIAS MAIS VENDIDAS (EM NÚMERO DE ITENS) ---")
+print(vendas_por_categoria.head(10))
